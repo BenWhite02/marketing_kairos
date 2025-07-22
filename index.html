@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Kairos - Perfect Moment Delivery Interface</title>
+    <meta name="title" content="Kairos - Perfect Moment Delivery Interface" />
+    <meta name="description" content="Revolutionary frontend interface that transforms complex marketing decision-making into intuitive, visual experiences." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kairos.dev/" />
+    <meta property="og:title" content="Kairos - Perfect Moment Delivery Interface" />
+    <meta property="og:description" content="Revolutionary frontend interface that transforms complex marketing decision-making into intuitive, visual experiences." />
+    <meta property="og:image" content="/og-image.jpg" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://kairos.dev/" />
+    <meta property="twitter:title" content="Kairos - Perfect Moment Delivery Interface" />
+    <meta property="twitter:description" content="Revolutionary frontend interface that transforms complex marketing decision-making into intuitive, visual experiences." />
+    <meta property="twitter:image" content="/og-image.jpg" />
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://rsms.me" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://rsms.me/inter/inter.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- Theme color -->
+    <meta name="theme-color" content="#0ea5e9" />
+    
+    <!-- PWA Meta Tags -->
+    <meta name="application-name" content="Kairos" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Kairos" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    <meta name="msapplication-TileColor" content="#0ea5e9" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    
+    <!-- Performance hints -->
+    <link rel="dns-prefetch" href="//api.kairos.dev" />
+    <link rel="preconnect" href="https://api.kairos.dev" />
+    
+    <!-- Critical CSS for loading state -->
+    <style>
+      /* Critical loading styles */
+      #root {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f9fafb;
+      }
+      
+      .loading-screen {
+        text-align: center;
+        padding: 2rem;
+      }
+      
+      .loading-logo {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 1rem;
+        background: linear-gradient(135deg, #0ea5e9, #d946ef);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+      }
+      
+      .loading-spinner {
+        width: 24px;
+        height: 24px;
+        border: 2px solid #e5e7eb;
+        border-top: 2px solid #0ea5e9;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 1rem auto;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      .loading-text {
+        color: #6b7280;
+        font-size: 14px;
+        font-family: system-ui, -apple-system, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading screen that will be replaced by React -->
+    <div id="root">
+      <div class="loading-screen">
+        <div class="loading-logo">K</div>
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading Kairos...</div>
+      </div>
+    </div>
+    
+    <!-- Main application script -->
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Fallback for no-script users -->
+    <noscript>
+      <div style="text-align: center; padding: 2rem; font-family: system-ui;">
+        <h1>JavaScript Required</h1>
+        <p>Kairos requires JavaScript to run. Please enable JavaScript in your browser and reload the page.</p>
+      </div>
+    </noscript>
+  </body>
+</html>

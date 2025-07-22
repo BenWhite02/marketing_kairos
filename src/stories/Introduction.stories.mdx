@@ -1,0 +1,167 @@
+// src/stories/Introduction.stories.mdx
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Documentation/Introduction" />
+
+# Kairos Design System
+
+Welcome to the **Kairos Design System** – a comprehensive, enterprise-grade component library designed for marketing orchestration platforms.
+
+## 🎯 **Mission**
+
+Kairos delivers "The Perfect Moment" interface that transforms complex marketing decisioning into intuitive, accessible, and delightful user experiences.
+
+## ✨ **Key Features**
+
+- **🎨 Enterprise Design System** - Professional visual language with accessibility at its core
+- **⚛️ React 18 + TypeScript** - Modern, type-safe component architecture
+- **♿ WCAG 2.1 AA Compliant** - Fully accessible for all users
+- **📱 Mobile-First** - Responsive design that works everywhere
+- **🎭 Dark/Light Themes** - Professional theme system with customization
+- **🚀 Performance Optimized** - Built for scale with lazy loading and optimization
+
+## 🏗️ **Architecture**
+
+### Component Hierarchy
+
+```
+📁 Components
+├── 🎨 UI Components        # Core design system components
+├── 🏢 Business Components  # Marketing-specific components  
+├── 🔧 Feature Components   # Advanced functionality
+├── 📱 Layout Components    # Responsive layout system
+└── ♿ Accessibility        # Accessibility utilities
+```
+
+### Design Principles
+
+1. **🎯 Purpose-Driven** - Every component solves a real marketing workflow problem
+2. **♿ Accessibility First** - WCAG 2.1 AA compliance built-in, not bolted-on
+3. **📱 Mobile-First** - Touch-optimized interactions for all devices
+4. **🔧 Composable** - Components work together seamlessly
+5. **🎨 Consistent** - Unified visual language across all experiences
+6. **⚡ Performant** - Optimized for enterprise-scale applications
+
+## 🎨 **Design Tokens**
+
+### Color System
+- **Primary**: Blue scale for actions and navigation
+- **Secondary**: Gray scale for text and backgrounds  
+- **Accent**: Green for success, Red for errors, Yellow for warnings
+- **Semantic**: Purpose-driven colors for atoms, moments, campaigns
+
+### Typography
+- **Font Family**: Inter (system fallbacks included)
+- **Scale**: 8-point scale from 12px to 72px
+- **Weights**: 400 (normal), 500 (medium), 600 (semibold), 700 (bold)
+- **Line Heights**: Optimized for readability and accessibility
+
+### Spacing
+- **Grid**: 8px base unit for consistent spacing
+- **Scale**: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px, 96px
+- **Component Spacing**: Consistent internal and external spacing
+
+## 🧩 **Component Categories**
+
+### UI Components
+Core building blocks following design system principles:
+- **Buttons** - 8 variants with loading states and accessibility
+- **Inputs** - 12 input types with validation and error states
+- **Cards** - Flexible card system for content organization
+- **Modals** - Accessible dialogs with focus management
+
+### Business Components  
+Marketing-specific components for workflows:
+- **AtomCard** - Eligibility atom display and management
+- **MomentCard** - Marketing moment configuration
+- **CampaignCard** - Campaign overview and control
+
+### Feature Components
+Advanced functionality for complex workflows:
+- **Drag & Drop** - Visual composition interfaces
+- **Rule Builder** - Logic configuration tools
+- **Analytics Charts** - Data visualization components
+- **Real-time Features** - Live collaboration and monitoring
+
+## 📚 **Getting Started**
+
+### Installation
+
+```bash
+npm install @kairos/design-system
+```
+
+### Basic Usage
+
+```tsx
+import { Button, Card, Input } from '@kairos/design-system';
+import '@kairos/design-system/styles.css';
+
+function MyComponent() {
+  return (
+    <Card>
+      <Input label="Campaign Name" placeholder="Enter campaign name" />
+      <Button variant="primary" size="lg">
+        Create Campaign
+      </Button>
+    </Card>
+  );
+}
+```
+
+### Theme Provider
+
+```tsx
+import { ThemeProvider } from '@kairos/design-system';
+
+function App() {
+  return (
+    <ThemeProvider theme="light">
+      <MyApplication />
+    </ThemeProvider>
+  );
+}
+```
+
+## 🔧 **Development**
+
+### Component Development
+- All components use **TypeScript** for type safety
+- **Framer Motion** for smooth animations
+- **Class Variance Authority** for variant management
+- **Tailwind CSS** for styling with custom design tokens
+
+### Testing Strategy
+- **Unit Tests** with Jest and React Testing Library
+- **Accessibility Tests** with axe-core and jest-axe
+- **Visual Regression Tests** with Chromatic
+- **Integration Tests** for complex workflows
+
+### Documentation
+- **Storybook** for component documentation
+- **MDX** for rich documentation pages
+- **Auto-generated** prop tables and API documentation
+- **Interactive examples** for all use cases
+
+## 🚀 **Production Ready**
+
+Kairos is designed for enterprise production environments:
+
+- **Performance**: Bundle size optimization and lazy loading
+- **Accessibility**: Screen reader tested and keyboard navigation
+- **Browser Support**: Modern browsers with progressive enhancement
+- **Security**: XSS protection and secure defaults
+- **Monitoring**: Performance metrics and error tracking
+
+## 📖 **Navigation**
+
+Explore the design system:
+
+- **Design System** - Colors, typography, spacing, and icons
+- **Components** - All available components with examples
+- **Patterns** - Common usage patterns and compositions
+- **Accessibility** - Accessibility features and guidelines
+
+---
+
+*Built with ❤️ for marketing teams who deserve better tools.*
