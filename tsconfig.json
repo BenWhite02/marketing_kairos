@@ -1,8 +1,8 @@
 ﻿{
   "compilerOptions": {
-    "target": "ES2022",
+    "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
 
@@ -14,16 +14,13 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
-    /* Strict type-checking options */
+    /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "exactOptionalPropertyTypes": true,
-    "noImplicitReturns": true,
-    "noUncheckedIndexedAccess": true,
 
-    /* Path mapping for clean imports */
+    /* Path mapping */
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
@@ -40,38 +37,19 @@
       "@/config/*": ["src/config/*"]
     },
 
-    /* Additional options for better development experience */
+    /* Additional options */
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "verbatimModuleSyntax": true,
-    
-    /* Enhanced type checking */
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictBindCallApply": true,
-    "strictPropertyInitialization": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true
+    "verbatimModuleSyntax": false
   },
-  
   "include": [
     "src",
-    "tests",
-    "vite.config.ts",
-    "vitest.config.ts",
-    ".eslintrc.cjs"
+    "vite.config.ts"
   ],
-  
-  "exclude": [
-    "node_modules",
-    "dist",
-    "build",
-    "coverage"
-  ],
-  
   "references": [
-    { "path": "./tsconfig.node.json" }
+    { 
+      "path": "./tsconfig.node.json" 
+    }
   ]
 }

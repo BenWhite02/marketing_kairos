@@ -1,0 +1,400 @@
+/* src/styles/themes/base.css - CORRECTED VERSION */
+/* 🎨 Kairos Base Theme System - CSS Custom Properties for 7 Themes */
+
+/* ================================
+   ROOT VARIABLES - DEFAULT (DEEP TECH)
+   ================================ */
+:root {
+  /* Primary theme colors */
+  --theme-primary: #1e40af;
+  --theme-primary-rgb: 30, 64, 175; /* RGB values for opacity usage */
+  --theme-primary-50: #eff6ff;
+  --theme-primary-100: #dbeafe;
+  --theme-primary-200: #bfdbfe;
+  --theme-primary-300: #93c5fd;
+  --theme-primary-400: #60a5fa;
+  --theme-primary-500: #3b82f6;
+  --theme-primary-600: #2563eb;
+  --theme-primary-700: #1d4ed8;
+  --theme-primary-800: #1e40af;
+  --theme-primary-900: #1e3a8a;
+
+  /* Secondary colors */
+  --theme-secondary: #475569;
+  --theme-secondary-rgb: 71, 85, 105;
+  --theme-secondary-50: #f8fafc;
+  --theme-secondary-100: #f1f5f9;
+  --theme-secondary-200: #e2e8f0;
+  --theme-secondary-300: #cbd5e1;
+  --theme-secondary-400: #94a3b8;
+  --theme-secondary-500: #64748b;
+  --theme-secondary-600: #475569;
+  --theme-secondary-700: #334155;
+  --theme-secondary-800: #1e293b;
+  --theme-secondary-900: #0f172a;
+
+  /* Accent colors */
+  --theme-accent: #f59e0b;
+  --theme-accent-rgb: 245, 158, 11;
+  --theme-accent-50: #fffbeb;
+  --theme-accent-100: #fef3c7;
+  --theme-accent-200: #fde68a;
+  --theme-accent-300: #fcd34d;
+  --theme-accent-400: #fbbf24;
+  --theme-accent-500: #f59e0b;
+  --theme-accent-600: #d97706;
+  --theme-accent-700: #b45309;
+  --theme-accent-800: #92400e;
+  --theme-accent-900: #78350f;
+
+  /* Semantic colors */
+  --theme-success: #059669;
+  --theme-success-rgb: 5, 150, 105;
+  --theme-warning: #f59e0b;
+  --theme-warning-rgb: 245, 158, 11;
+  --theme-error: #dc2626;
+  --theme-error-rgb: 220, 38, 38;
+  --theme-info: #0ea5e9;
+  --theme-info-rgb: 14, 165, 233;
+
+  /* Surface colors */
+  --theme-background: #f8fafc;
+  --theme-background-rgb: 248, 250, 252;
+  --theme-surface: #ffffff;
+  --theme-surface-rgb: 255, 255, 255;
+  --theme-surface-hover: #f1f5f9;
+  --theme-surface-hover-rgb: 241, 245, 249;
+  --theme-surface-active: #e2e8f0;
+  --theme-surface-active-rgb: 226, 232, 240;
+
+  /* Text colors */
+  --theme-text-primary: #1e293b;
+  --theme-text-primary-rgb: 30, 41, 59;
+  --theme-text-secondary: #475569;
+  --theme-text-secondary-rgb: 71, 85, 105;
+  --theme-text-muted: #64748b;
+  --theme-text-muted-rgb: 100, 116, 139;
+  --theme-text-inverse: #ffffff;
+  --theme-text-inverse-rgb: 255, 255, 255;
+
+  /* Border colors */
+  --theme-border: #e2e8f0;
+  --theme-border-rgb: 226, 232, 240;
+  --theme-border-muted: #f1f5f9;
+  --theme-border-muted-rgb: 241, 245, 249;
+  --theme-border-strong: #cbd5e1;
+  --theme-border-strong-rgb: 203, 213, 225;
+
+  /* Shadow variables */
+  --theme-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --theme-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --theme-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --theme-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* Gradient variables */
+  --theme-gradient-primary: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  --theme-gradient-secondary: linear-gradient(135deg, #475569 0%, #64748b 100%);
+  --theme-gradient-accent: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+
+  /* Effect variables (default disabled) */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-blur: blur(10px);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  
+  --neu-light-shadow: #ffffff;
+  --neu-dark-shadow: #d1d5db;
+  --neu-convex: linear-gradient(145deg, #f0f0f0, #cacaca);
+  --neu-concave: linear-gradient(145deg, #cacaca, #f0f0f0);
+  --neu-inset: inset 2px 2px 4px #d1d5db, inset -2px -2px 4px #ffffff;
+
+  /* Animation variables */
+  --theme-transition-fast: 0.15s ease-out;
+  --theme-transition-normal: 0.3s ease-out;
+  --theme-transition-slow: 0.5s ease-out;
+}
+
+/* ================================
+   THEME 1: DEEP TECH (DEFAULT)
+   ================================ */
+[data-theme="deep-tech"] {
+  --theme-primary: #1e40af;
+  --theme-primary-rgb: 30, 64, 175;
+  --theme-secondary: #475569;
+  --theme-secondary-rgb: 71, 85, 105;
+  --theme-accent: #f59e0b;
+  --theme-accent-rgb: 245, 158, 11;
+  --theme-success: #059669;
+  --theme-success-rgb: 5, 150, 105;
+  --theme-background: #f8fafc;
+  --theme-background-rgb: 248, 250, 252;
+  --theme-surface: #ffffff;
+  --theme-surface-rgb: 255, 255, 255;
+  --theme-text-primary: #1e293b;
+  --theme-text-primary-rgb: 30, 41, 59;
+  --theme-border: #e2e8f0;
+  --theme-border-rgb: 226, 232, 240;
+}
+
+/* ================================
+   THEME 2: NORDIC FROST
+   ================================ */
+[data-theme="nordic-frost"] {
+  --theme-primary: #0ea5e9;
+  --theme-primary-rgb: 14, 165, 233;
+  --theme-secondary: #64748b;
+  --theme-secondary-rgb: 100, 116, 139;
+  --theme-accent: #06b6d4;
+  --theme-accent-rgb: 6, 182, 212;
+  --theme-success: #10b981;
+  --theme-success-rgb: 16, 185, 129;
+  --theme-background: #ffffff;
+  --theme-background-rgb: 255, 255, 255;
+  --theme-surface: #f8fafc;
+  --theme-surface-rgb: 248, 250, 252;
+  --theme-text-primary: #0f172a;
+  --theme-text-primary-rgb: 15, 23, 42;
+  --theme-border: #e2e8f0;
+  --theme-border-rgb: 226, 232, 240;
+  --theme-gradient-primary: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
+  --theme-gradient-accent: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%);
+}
+
+/* ================================
+   THEME 3: MIDNIGHT ELEGANCE (DARK)
+   ================================ */
+[data-theme="midnight-elegance"] {
+  --theme-primary: #3b82f6;
+  --theme-primary-rgb: 59, 130, 246;
+  --theme-secondary: #1e293b;
+  --theme-secondary-rgb: 30, 41, 59;
+  --theme-accent: #f97316;
+  --theme-accent-rgb: 249, 115, 22;
+  --theme-success: #22c55e;
+  --theme-success-rgb: 34, 197, 94;
+  --theme-background: #0f172a;
+  --theme-background-rgb: 15, 23, 42;
+  --theme-surface: #1e293b;
+  --theme-surface-rgb: 30, 41, 59;
+  --theme-surface-hover: #334155;
+  --theme-surface-hover-rgb: 51, 65, 85;
+  --theme-surface-active: #475569;
+  --theme-surface-active-rgb: 71, 85, 105;
+  --theme-text-primary: #f8fafc;
+  --theme-text-primary-rgb: 248, 250, 252;
+  --theme-text-secondary: #cbd5e1;
+  --theme-text-secondary-rgb: 203, 213, 225;
+  --theme-text-muted: #94a3b8;
+  --theme-text-muted-rgb: 148, 163, 184;
+  --theme-text-inverse: #0f172a;
+  --theme-text-inverse-rgb: 15, 23, 42;
+  --theme-border: #334155;
+  --theme-border-rgb: 51, 65, 85;
+  --theme-border-muted: #1e293b;
+  --theme-border-muted-rgb: 30, 41, 59;
+  --theme-border-strong: #475569;
+  --theme-border-strong-rgb: 71, 85, 105;
+  --theme-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --theme-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --theme-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+  --theme-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.6), 0 8px 10px -6px rgb(0 0 0 / 0.6);
+}
+
+/* ================================
+   THEME 4: EARTH TECH
+   ================================ */
+[data-theme="earth-tech"] {
+  --theme-primary: #059669;
+  --theme-primary-rgb: 5, 150, 105;
+  --theme-secondary: #78716c;
+  --theme-secondary-rgb: 120, 113, 108;
+  --theme-accent: #ea580c;
+  --theme-accent-rgb: 234, 88, 12;
+  --theme-success: #16a34a;
+  --theme-success-rgb: 22, 163, 74;
+  --theme-background: #fefdf8;
+  --theme-background-rgb: 254, 253, 248;
+  --theme-surface: #ffffff;
+  --theme-surface-rgb: 255, 255, 255;
+  --theme-text-primary: #1c1917;
+  --theme-text-primary-rgb: 28, 25, 23;
+  --theme-text-secondary: #44403c;
+  --theme-text-secondary-rgb: 68, 64, 60;
+  --theme-text-muted: #78716c;
+  --theme-text-muted-rgb: 120, 113, 108;
+  --theme-border: #e7e5e4;
+  --theme-border-rgb: 231, 229, 228;
+  --theme-border-muted: #f5f5f4;
+  --theme-border-muted-rgb: 245, 245, 244;
+  --theme-border-strong: #d6d3d1;
+  --theme-border-strong-rgb: 214, 211, 209;
+  --theme-gradient-primary: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  --theme-gradient-accent: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
+}
+
+/* ================================
+   THEME 5: VIOLET FUTURE
+   ================================ */
+[data-theme="violet-future"] {
+  --theme-primary: #8b5cf6;
+  --theme-primary-rgb: 139, 92, 246;
+  --theme-secondary: #64748b;
+  --theme-secondary-rgb: 100, 116, 139;
+  --theme-accent: #f59e0b;
+  --theme-accent-rgb: 245, 158, 11;
+  --theme-success: #10b981;
+  --theme-success-rgb: 16, 185, 129;
+  --theme-background: #fafaf9;
+  --theme-background-rgb: 250, 250, 249;
+  --theme-surface: #ffffff;
+  --theme-surface-rgb: 255, 255, 255;
+  --theme-text-primary: #18181b;
+  --theme-text-primary-rgb: 24, 24, 27;
+  --theme-text-secondary: #3f3f46;
+  --theme-text-secondary-rgb: 63, 63, 70;
+  --theme-text-muted: #71717a;
+  --theme-text-muted-rgb: 113, 113, 122;
+  --theme-border: #e4e4e7;
+  --theme-border-rgb: 228, 228, 231;
+  --theme-border-muted: #f4f4f5;
+  --theme-border-muted-rgb: 244, 244, 245;
+  --theme-border-strong: #d4d4d8;
+  --theme-border-strong-rgb: 212, 212, 216;
+  --theme-gradient-primary: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+  --theme-shadow-sm: 0 1px 2px 0 rgb(139 92 246 / 0.05);
+  --theme-shadow-md: 0 4px 6px -1px rgb(139 92 246 / 0.1), 0 2px 4px -2px rgb(139 92 246 / 0.1);
+}
+
+/* ================================
+   THEME 6: GLASSMORPHISM DYNAMIC
+   ================================ */
+[data-theme="glassmorphism"] {
+  --theme-primary: #3b82f6;
+  --theme-primary-rgb: 59, 130, 246;
+  --theme-secondary: #1e293b;
+  --theme-secondary-rgb: 30, 41, 59;
+  --theme-accent: #06b6d4;
+  --theme-accent-rgb: 6, 182, 212;
+  --theme-success: #22c55e;
+  --theme-success-rgb: 34, 197, 94;
+  --theme-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --theme-surface: rgba(255, 255, 255, 0.1);
+  --theme-surface-rgb: 255, 255, 255;
+  --theme-text-primary: #1e293b;
+  --theme-text-primary-rgb: 30, 41, 59;
+  --theme-text-secondary: #475569;
+  --theme-text-secondary-rgb: 71, 85, 105;
+  --theme-text-muted: #64748b;
+  --theme-text-muted-rgb: 100, 116, 139;
+  --theme-border: rgba(255, 255, 255, 0.2);
+  --theme-border-muted: rgba(255, 255, 255, 0.1);
+  --theme-border-strong: rgba(255, 255, 255, 0.3);
+  
+  /* Glass-specific variables */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-blur: blur(20px);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  
+  /* Enhanced shadows for glass */
+  --theme-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --theme-shadow-md: 0 8px 16px rgba(0, 0, 0, 0.15);
+  --theme-shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.2);
+  --theme-shadow-xl: 0 24px 48px rgba(0, 0, 0, 0.25);
+}
+
+/* ================================
+   THEME 7: NEUMORPHIC TEXTURE
+   ================================ */
+[data-theme="neumorphic"] {
+  --theme-primary: #6366f1;
+  --theme-primary-rgb: 99, 102, 241;
+  --theme-secondary: #e5e7eb;
+  --theme-secondary-rgb: 229, 231, 235;
+  --theme-accent: #f59e0b;
+  --theme-accent-rgb: 245, 158, 11;
+  --theme-success: #10b981;
+  --theme-success-rgb: 16, 185, 129;
+  --theme-background: #f9fafb;
+  --theme-background-rgb: 249, 250, 251;
+  --theme-surface: #f3f4f6;
+  --theme-surface-rgb: 243, 244, 246;
+  --theme-text-primary: #111827;
+  --theme-text-primary-rgb: 17, 24, 39;
+  --theme-text-secondary: #374151;
+  --theme-text-secondary-rgb: 55, 65, 81;
+  --theme-text-muted: #6b7280;
+  --theme-text-muted-rgb: 107, 114, 128;
+  --theme-border: #d1d5db;
+  --theme-border-rgb: 209, 213, 219;
+  --theme-border-muted: #e5e7eb;
+  --theme-border-muted-rgb: 229, 231, 235;
+  --theme-border-strong: #9ca3af;
+  --theme-border-strong-rgb: 156, 163, 175;
+  
+  /* Neumorphic-specific variables */
+  --neu-light-shadow: #ffffff;
+  --neu-dark-shadow: #d1d5db;
+  --neu-inset: inset 2px 2px 4px #d1d5db, inset -2px -2px 4px #ffffff;
+  --neu-convex: linear-gradient(145deg, #f0f0f0, #cacaca);
+  --neu-concave: linear-gradient(145deg, #cacaca, #f0f0f0);
+  
+  /* Neumorphic shadows */
+  --theme-shadow-sm: 2px 2px 4px #d1d5db, -2px -2px 4px #ffffff;
+  --theme-shadow-md: 4px 4px 8px #d1d5db, -4px -4px 8px #ffffff;
+  --theme-shadow-lg: 8px 8px 16px #d1d5db, -8px -8px 16px #ffffff;
+  --theme-shadow-xl: 12px 12px 24px #d1d5db, -12px -12px 24px #ffffff;
+}
+
+/* ================================
+   ACCESSIBILITY & PERFORMANCE
+   ================================ */
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  :root {
+    --theme-border: #000000;
+    --theme-border-rgb: 0, 0, 0;
+    --theme-text-primary: #000000;
+    --theme-text-primary-rgb: 0, 0, 0;
+  }
+  
+  [data-theme="midnight-elegance"] {
+    --theme-border: #ffffff;
+    --theme-border-rgb: 255, 255, 255;
+    --theme-text-primary: #ffffff;
+    --theme-text-primary-rgb: 255, 255, 255;
+  }
+}
+
+/* ================================
+   RESPONSIVE THEME ADJUSTMENTS
+   ================================ */
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  :root {
+    --theme-transition-fast: 0.1s ease-out;
+    --theme-transition-normal: 0.2s ease-out;
+  }
+  
+  /* Reduce glass effects on mobile for performance */
+  [data-theme="glassmorphism"] {
+    --glass-blur: blur(5px);
+  }
+  
+  /* Simplify neumorphic shadows on mobile */
+  [data-theme="neumorphic"] {
+    --theme-shadow-md: 2px 2px 4px #d1d5db, -1px -1px 2px #ffffff;
+    --theme-shadow-lg: 4px 4px 8px #d1d5db, -2px -2px 4px #ffffff;
+  }
+}

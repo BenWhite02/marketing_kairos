@@ -207,6 +207,32 @@ export const StatisticalConfig: React.FC<StatisticalConfigProps> = ({
               disabled={readOnly}
             >
               <ShieldCheckIcon className="h-8 w-8 text-blue-600 mx-auto mb-2" />
+              <h4 className="font-medium text-gray-900 mb-1">Conservative</h4>
+              <p className="text-xs text-gray-600">99% confidence, 90% power, 5% MDE</p>
+              <p className="text-xs text-gray-500 mt-1">High certainty, larger sample needed</p>
+            </motion.button>
+
+            <motion.button
+              onClick={() => applyPreset('standard')}
+              className="p-4 border-2 border-green-200 bg-green-50 rounded-lg hover:border-green-300 hover:bg-green-100 transition-colors disabled:opacity-50"
+              whileHover={!readOnly ? { scale: 1.02 } : {}}
+              whileTap={!readOnly ? { scale: 0.98 } : {}}
+              disabled={readOnly}
+            >
+              <AcademicCapIcon className="h-8 w-8 text-green-600 mx-auto mb-2" />
+              <h4 className="font-medium text-gray-900 mb-1">Standard</h4>
+              <p className="text-xs text-gray-600">95% confidence, 80% power, 5% MDE</p>
+              <p className="text-xs text-gray-500 mt-1">Industry standard, recommended</p>
+            </motion.button>
+
+            <motion.button
+              onClick={() => applyPreset('aggressive')}
+              className="p-4 border-2 border-gray-200 rounded-lg hover:border-orange-300 hover:bg-orange-50 transition-colors disabled:opacity-50"
+              whileHover={!readOnly ? { scale: 1.02 } : {}}
+              whileTap={!readOnly ? { scale: 0.98 } : {}}
+              disabled={readOnly}
+            >
+              <BoltIcon className="h-8 w-8 text-orange-600 mx-auto mb-2" />
               <h4 className="font-medium text-gray-900 mb-1">Aggressive</h4>
               <p className="text-xs text-gray-600">90% confidence, 70% power, 10% MDE</p>
               <p className="text-xs text-gray-500 mt-1">Faster results, lower precision</p>
@@ -567,30 +593,4 @@ export const StatisticalConfig: React.FC<StatisticalConfigProps> = ({
       )}
     </div>
   );
-};-1">Conservative</h4>
-              <p className="text-xs text-gray-600">99% confidence, 90% power, 5% MDE</p>
-              <p className="text-xs text-gray-500 mt-1">High certainty, larger sample needed</p>
-            </motion.button>
-
-            <motion.button
-              onClick={() => applyPreset('standard')}
-              className="p-4 border-2 border-green-200 bg-green-50 rounded-lg hover:border-green-300 hover:bg-green-100 transition-colors disabled:opacity-50"
-              whileHover={!readOnly ? { scale: 1.02 } : {}}
-              whileTap={!readOnly ? { scale: 0.98 } : {}}
-              disabled={readOnly}
-            >
-              <AcademicCapIcon className="h-8 w-8 text-green-600 mx-auto mb-2" />
-              <h4 className="font-medium text-gray-900 mb-1">Standard</h4>
-              <p className="text-xs text-gray-600">95% confidence, 80% power, 5% MDE</p>
-              <p className="text-xs text-gray-500 mt-1">Industry standard, recommended</p>
-            </motion.button>
-
-            <motion.button
-              onClick={() => applyPreset('aggressive')}
-              className="p-4 border-2 border-gray-200 rounded-lg hover:border-orange-300 hover:bg-orange-50 transition-colors disabled:opacity-50"
-              whileHover={!readOnly ? { scale: 1.02 } : {}}
-              whileTap={!readOnly ? { scale: 0.98 } : {}}
-              disabled={readOnly}
-            >
-              <BoltIcon className="h-8 w-8 text-orange-600 mx-auto mb-2" />
-              <h4 className="font-medium text-gray-900 mb
+};

@@ -1,240 +1,446 @@
-﻿/* File: C:\Marketing\kairos\src\index.css */
-/* Kairos Main Stylesheet */
-/* Author: Sankhadeep Banerjee */
+﻿/* src/index.css - FIXED VERSION WITH CORRECT PATHS */
+/* 🎨 Kairos Main Stylesheet - Complete Theme System Integration */
 
+/* ================================
+   CRITICAL: ALL @IMPORT STATEMENTS MUST COME FIRST
+   ================================ */
+
+/* 1. Tailwind CSS base imports */
 @import 'tailwindcss/base';
-@import 'tailwindcss/components';
+@import 'tailwindcss/components';  
 @import 'tailwindcss/utilities';
 
-/* Import Inter font */
-@import url('https://rsms.me/inter/inter.css');
+/* 2. Base theme system (must come before theme-specific imports) */
+@import './styles/themes/base.css';
 
-/* Custom CSS Variables */
+/* 3. Specific theme implementations */
+@import './styles/themes/professional.css';
+@import './styles/themes/creative.css';
+@import './styles/themes/glassmorphism.css';
+@import './styles/themes/neumorphic.css';
+
+/* 4. Global effects and animations */
+@import './styles/themes/effects.css';
+
+/* ================================
+   ROOT VARIABLES & SETUP
+   ================================ */
+
 :root {
-  /* Kairos Brand Colors */
-  --color-primary: theme('colors.blue.500');
-  --color-secondary: theme('colors.purple.500');
-  --color-accent: theme('colors.emerald.500');
-  --color-success: theme('colors.green.500');
-  --color-warning: theme('colors.yellow.500');
-  --color-error: theme('colors.red.500');
+  /* Core Design System Variables */
+  --font-sans: 'Inter var', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
   
-  /* Animation timing functions */
-  --ease-in-out-soft: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-out-back: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  --ease-in-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  /* Base Spacing Scale (8px grid) */
+  --spacing-xs: 0.25rem;  /* 4px */
+  --spacing-sm: 0.5rem;   /* 8px */
+  --spacing-md: 1rem;     /* 16px */
+  --spacing-lg: 1.5rem;   /* 24px */
+  --spacing-xl: 2rem;     /* 32px */
+  --spacing-2xl: 3rem;    /* 48px */
+  --spacing-3xl: 4rem;    /* 64px */
   
-  /* Shadows */
-  --shadow-soft: 0 2px 15px 0 rgb(0 0 0 / 0.1);
-  --shadow-medium: 0 4px 25px 0 rgb(0 0 0 / 0.15);
-  --shadow-hard: 0 10px 40px 0 rgb(0 0 0 / 0.2);
+  /* Border Radius Scale */
+  --radius-sm: 0.25rem;   /* 4px */
+  --radius-md: 0.375rem;  /* 6px */
+  --radius-lg: 0.5rem;    /* 8px */
+  --radius-xl: 0.75rem;   /* 12px */
+  --radius-2xl: 1rem;     /* 16px */
+  
+  /* Animation Durations */
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  
+  /* Z-Index Scale */
+  --z-dropdown: 1000;
+  --z-sticky: 1010;
+  --z-fixed: 1020;
+  --z-modal-backdrop: 1030;
+  --z-modal: 1040;
+  --z-popover: 1050;
+  --z-tooltip: 1060;
+  --z-toast: 1070;
+  
+  /* Color scheme support */
+  color-scheme: light dark;
+  
+  /* Theme system ready indicator */
+  --theme-system-version: "1.0.0";
+  --theme-system-loaded: 1;
 }
 
-/* Font optimization */
+/* ================================
+   HTML & BODY BASE SETUP
+   ================================ */
+
 html {
-  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
-  font-family: 'Inter Variable', system-ui, sans-serif;
-}
-
-/* Smooth scrolling */
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
-}
-
-/* Base styles */
-body {
-  @apply bg-gray-50 text-gray-900 antialiased;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Focus styles for accessibility */
-*:focus-visible {
-  @apply outline-none ring-2 ring-blue-500 ring-offset-2;
-}
-
-/* Custom scrollbar styles */
-.custom-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: theme('colors.gray.400') theme('colors.gray.100');
-}
-
-.custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-  @apply bg-gray-100 rounded-full;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  @apply bg-gray-400 rounded-full hover:bg-gray-500;
-}
-
-/* Loading spinner */
-.loading-spinner {
-  @apply inline-block w-4 h-4 border-2 border-gray-300 border-t-blue-500 rounded-full animate-spin;
-}
-
-/* Tooltip styles */
-.tooltip {
-  position: absolute;
-  z-index: 9999;
-  padding: 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: white;
-  background-color: rgb(17 24 39);
-  border-radius: 0.375rem;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-  opacity: 0;
+  /* Prevent flash of unstyled content during theme loading */
   visibility: hidden;
-  transition: opacity 300ms ease;
+  scroll-behavior: smooth;
+  font-feature-settings: 'cv01', 'cv02', 'cv03', 'cv04';
 }
 
-.tooltip.show {
-  opacity: 1;
+html.themes-loaded {
   visibility: visible;
 }
 
-/* Card hover effects */
-.card-hover {
-  @apply transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1;
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.5;
+  
+  /* Theme-aware colors */
+  background-color: var(--theme-background);
+  color: var(--theme-text-primary);
+  
+  /* Smooth theme transitions */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  
+  /* Text rendering optimization */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-/* Button loading state */
-.btn-loading {
-  @apply relative text-transparent transition-none hover:text-transparent;
+/* Focus management */
+body:not(.user-is-tabbing) button:focus,
+body:not(.user-is-tabbing) input:focus,
+body:not(.user-is-tabbing) select:focus,
+body:not(.user-is-tabbing) textarea:focus {
+  outline: none;
 }
 
-.btn-loading::after {
-  content: '';
-  position: absolute;
-  inset: 0;
+/* App container */
+#root {
+  min-height: 100vh;
+  background-color: var(--theme-background);
+  transition: background-color 0.3s ease;
+}
+
+/* ================================
+   REMOVE DEFAULT MARGINS/PADDING
+   ================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================================
+   FOCUS MANAGEMENT
+   ================================ */
+
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--theme-primary, #3b82f6);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ================================
+   TYPOGRAPHY ENHANCEMENTS
+   ================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--theme-text-primary);
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0;
+}
+
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.875rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1rem; }
+
+p {
+  color: var(--theme-text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+small {
+  color: var(--theme-text-muted);
+  font-size: 0.875rem;
+}
+
+strong, b {
+  font-weight: 600;
+  color: var(--theme-text-primary);
+}
+
+/* Links */
+a {
+  color: var(--theme-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--theme-primary);
+  opacity: 0.8;
+}
+
+/* ================================
+   FORM ELEMENTS
+   ================================ */
+
+/* Input base styles */
+input, textarea, select {
+  background: var(--theme-surface);
+  border: 1px solid var(--theme-border);
+  border-radius: 0.5rem;
+  color: var(--theme-text-primary);
+  font-family: inherit;
+  font-size: 0.875rem;
+  padding: 0.75rem 1rem;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--theme-text-muted);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--theme-primary);
+  box-shadow: 0 0 0 3px rgba(var(--theme-primary-rgb), 0.1);
+  outline: none;
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+  border-color: var(--theme-border-strong);
+}
+
+/* Button base styles */
+button {
+  background: var(--theme-primary);
+  border: 1px solid var(--theme-primary);
+  border-radius: 0.5rem;
+  color: var(--theme-text-inverse);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ================================
+   SCROLLBAR CUSTOMIZATION
+   ================================ */
+
+/* Webkit scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--theme-surface);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--theme-border-strong);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-text-muted);
+}
+
+/* Dark theme scrollbar adjustments */
+[data-theme="midnight-elegance"] ::-webkit-scrollbar-track {
+  background: rgba(30, 41, 59, 0.4);
+}
+
+[data-theme="midnight-elegance"] ::-webkit-scrollbar-thumb {
+  background: rgba(71, 85, 105, 0.6);
+}
+
+[data-theme="midnight-elegance"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(71, 85, 105, 0.8);
+}
+
+/* Firefox scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--theme-border-strong) var(--theme-surface);
+}
+
+/* ================================
+   SELECTION STYLES
+   ================================ */
+
+::selection {
+  background: rgba(var(--theme-primary-rgb), 0.2);
+  color: var(--theme-text-primary);
+}
+
+::-moz-selection {
+  background: rgba(var(--theme-primary-rgb), 0.2);
+  color: var(--theme-text-primary);
+}
+
+/* ================================
+   LOADING STATES
+   ================================ */
+
+/* Theme loading overlay */
+.theme-loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--theme-background);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1rem;
-  height: 1rem;
-  margin: auto;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10' stroke='currentColor' stroke-width='4' class='opacity-25'/%3E%3Cpath fill='currentColor' d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z' class='opacity-75'/%3E%3C/svg%3E");
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+}
+
+.theme-loading-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Loading spinner */
+.theme-loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--theme-border);
+  border-top: 3px solid var(--theme-primary);
+  border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 
-/* Form input enhancements */
-.input-group {
-  @apply relative;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-.input-group .input {
-  /* Use peer class directly without @apply for better compatibility */
+/* ================================
+   UTILITY CLASSES
+   ================================ */
+
+/* Hide elements visually but keep them accessible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.input-label {
-  @apply absolute left-3 top-2 text-gray-500 transition-all duration-200 ease-in-out transform origin-left pointer-events-none;
+/* Skip to content link */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--theme-primary);
+  color: var(--theme-text-inverse);
+  padding: 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  z-index: 1000;
+  transition: top 0.3s ease;
 }
 
-.input-group .input:focus + .input-label,
-.input-group .input:not(:placeholder-shown) + .input-label {
-  transform: translateY(-1.5rem) scale(0.75);
-  color: rgb(37 99 235);
+.skip-to-content:focus {
+  top: 6px;
 }
 
-/* Toast notification styles */
-.toast-enter {
-  @apply opacity-0 transform scale-95 translate-y-2;
-}
-
-.toast-enter-active {
-  @apply opacity-100 transform scale-100 translate-y-0 transition-all duration-300 ease-out;
-}
-
-.toast-exit {
-  @apply opacity-100 transform scale-100 translate-y-0;
-}
-
-.toast-exit-active {
-  @apply opacity-0 transform scale-95 translate-y-2 transition-all duration-200 ease-in;
-}
-
-/* Modal backdrop */
-.modal-backdrop {
+/* Theme debugging */
+.theme-debug {
   position: fixed;
-  inset: 0;
-  background-color: rgb(0 0 0 / 0.5);
-  z-index: 9998;
-  backdrop-filter: blur(4px);
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.75rem;
+  z-index: 9999;
+  max-width: 300px;
+  word-break: break-all;
 }
 
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, rgb(59 130 246), rgb(147 51 234));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+/* ================================
+   RESPONSIVE ADJUSTMENTS
+   ================================ */
 
-/* Glass morphism effect */
-.glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-primary: rgb(96 165 250);
-    --color-secondary: rgb(196 181 253);
-    --color-accent: rgb(110 231 183);
-  }
-  
+@media (max-width: 768px) {
   body {
-    @apply bg-gray-900 text-gray-100;
+    font-size: 0.875rem;
   }
   
-  .card {
-    @apply bg-gray-800 border-gray-700;
-  }
+  h1 { font-size: 1.875rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+  h4 { font-size: 1.125rem; }
+  h5 { font-size: 1rem; }
+  h6 { font-size: 0.875rem; }
   
-  .glass {
-    background: rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  input, textarea, select, button {
+    font-size: 16px; /* Prevent zoom on iOS */
   }
 }
 
-/* Print styles */
-@media print {
-  .no-print {
-    @apply hidden;
-  }
-  
-  body {
-    @apply text-black bg-white;
-  }
-  
-  .card {
-    @apply border border-gray-300 shadow-none;
-  }
-}
+/* ================================
+   ACCESSIBILITY ENHANCEMENTS
+   ================================ */
 
-/* High contrast mode support */
+/* High contrast mode */
 @media (prefers-contrast: high) {
-  .btn {
-    @apply border-2 border-current;
+  :root {
+    --theme-border: currentColor;
   }
   
-  .card {
-    @apply border-2 border-gray-900;
+  button, input, textarea, select {
+    border: 2px solid currentColor;
   }
 }
 
-/* Reduced motion support */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -242,5 +448,129 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  body {
+    transition: none !important;
+  }
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  button {
+    background: ButtonFace;
+    border: 1px solid ButtonText;
+    color: ButtonText;
+  }
+  
+  input, textarea, select {
+    background: Field;
+    border: 1px solid FieldText;
+    color: FieldText;
+  }
+}
+
+/* ================================
+   THEME SYSTEM INITIALIZATION
+   ================================ */
+
+/* Ensure smooth theme transitions */
+.theme-transitioning * {
+  transition: 
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease !important;
+}
+
+/* Theme system ready indicator */
+.theme-system-ready {
+  --themes-initialized: 1;
+}
+
+/* Prevent layout shift during theme changes */
+.theme-changing {
+  * {
+    animation-play-state: paused !important;
+  }
+}
+
+/* ================================
+   PRINT STYLES
+   ================================ */
+
+@media print {
+  *,
+  *:before,
+  *:after {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* ================================
+   PERFORMANCE OPTIMIZATIONS
+   ================================ */
+
+/* GPU acceleration for animations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimize repaints */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-auto {
+  will-change: auto;
+}
+
+/* Optimize for mobile */
+@media (max-width: 768px) {
+  /* Disable hover effects on touch devices */
+  .no-touch-hover:hover {
+    background: inherit;
+    color: inherit;
+    transform: none;
   }
 }

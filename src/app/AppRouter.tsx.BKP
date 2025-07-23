@@ -1,0 +1,1077 @@
+// src/app/AppRouter.tsx - COMPLETE WORKING VERSION - BOTH SIDES VISIBLE
+import React, { Suspense, useState, useEffect } from 'react';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+
+// ===== CINEMATIC LOGIN PAGE - BOTH SIDES FORCE VISIBLE =====
+const CinematicLoginPage: React.FC = () => {
+  console.log('🎬 CINEMATIC LOGIN: Rendering COMPLETE WORKING version - BOTH SIDES VISIBLE');
+  
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    email: 'admin@kairos.dev',
+    password: 'admin123'
+  });
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('🎬 LOGIN: Form submitted', { email: formData.email });
+    
+    setIsLoading(true);
+    
+    // Simulate login delay
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    console.log('🎬 LOGIN: Redirecting to dashboard...');
+    window.location.href = '/dashboard';
+  };
+
+  // Setup and force visibility for BOTH sides
+  useEffect(() => {
+    console.log('🎬 CINEMATIC LOGIN: Component mounted - FORCING BOTH SIDES VISIBLE');
+    
+    // Clear any emergency styles
+    document.body.style.cssText = '';
+    const root = document.getElementById('root');
+    if (root) {
+      root.style.cssText = '';
+    }
+
+    // Add animations and force visibility CSS
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes marquee {
+        from { transform: translateX(100%); }
+        to { transform: translateX(-100%); }
+      }
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+      }
+      @keyframes ping {
+        75%, 100% { transform: scale(2); opacity: 0; }
+      }
+      @keyframes bounce {
+        0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8,0,1,1); }
+        50% { transform: none; animation-timing-function: cubic-bezier(0,0,0.2,1); }
+      }
+      .animate-marquee { animation: marquee 15s linear infinite; }
+      .animate-spin { animation: spin 1s linear infinite; }
+      .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+      .animate-ping { animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite; }
+      .animate-bounce { animation: bounce 1s infinite; }
+      
+      /* Force visibility classes for BOTH sides */
+      .force-visible-left {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 50% !important;
+        min-height: 100vh !important;
+      }
+      
+      .force-visible-right {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 50% !important;
+        min-height: 100vh !important;
+        background-color: white !important;
+      }
+      
+      /* Hover effects */
+      .hover-scale:hover { transform: scale(1.05); transition: transform 0.2s; }
+      .hover-glow:hover { filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.3)); }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      const styles = document.head.querySelectorAll('style');
+      styles.forEach(s => {
+        if (s.textContent?.includes('marquee')) {
+          s.remove();
+        }
+      });
+    };
+  }, []);
+
+  return (
+    <div style={{
+      minHeight: '100vh',
+      position: 'relative',
+      overflow: 'hidden',
+      fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+      backgroundColor: '#f8fafc'
+    }}>
+      {/* Background */}
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 25%, #e2e8f0 50%, #e0f2fe 75%, #e0f7fa 100%)',
+        zIndex: -10
+      }} />
+      
+      {/* Main Content - FORCE BOTH SIDES VISIBLE */}
+      <div style={{
+        minHeight: '100vh',
+        display: 'flex',
+        position: 'relative',
+        zIndex: 10,
+        width: '100%'
+      }}>
+        
+        {/* Left Side - FORCE VISIBLE CINEMATIC EXPERIENCE */}
+        <div 
+          className="force-visible-left"
+          style={{
+            display: 'flex',
+            width: '50%',
+            position: 'relative',
+            overflow: 'hidden',
+            background: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 40%, #1e40af 100%)',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            visibility: 'visible',
+            opacity: 1,
+            minHeight: '100vh'
+          }}
+        >
+          
+          {/* YOUR PORTRAIT - Proper Implementation */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundImage: `url('/images/portrait-hero.jpg')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            opacity: 0.20,
+            filter: 'contrast(1.05) brightness(0.6) saturate(0.7)',
+            zIndex: 1
+          }} />
+          
+          {/* Enhanced Portrait Silhouette Overlay */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 2
+          }}>
+            <div style={{
+              position: 'relative',
+              width: '320px',
+              height: '384px',
+              opacity: 0.05,
+              transform: 'rotate(2deg)'
+            }}>
+              {/* Your Portrait with Artistic Mask */}
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                backgroundImage: `url('/images/portrait-hero.jpg')`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                filter: 'contrast(1.1) brightness(0.5)',
+                maskImage: 'radial-gradient(ellipse 70% 90% at center, black 20%, transparent 60%)',
+                WebkitMaskImage: 'radial-gradient(ellipse 70% 90% at center, black 20%, transparent 60%)'
+              }} />
+              
+              {/* Artistic Overlay Effects */}
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, transparent 50%, rgba(6, 182, 212, 0.04) 100%)',
+                mixBlendMode: 'overlay'
+              }} />
+            </div>
+          </div>
+          
+          {/* Cinematic Overlays */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'linear-gradient(90deg, rgba(0,0,0,0.6) 0%, transparent 50%, rgba(0,0,0,0.4) 100%)',
+            zIndex: 3
+          }} />
+          
+          {/* Atmospheric Particles */}
+          <div style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 4}}>
+            {[...Array(25)].map((_, i) => (
+              <div
+                key={i}
+                className="animate-pulse"
+                style={{
+                  position: 'absolute',
+                  width: '4px',
+                  height: '4px',
+                  backgroundColor: 'rgba(255,255,255,0.3)',
+                  borderRadius: '50%',
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 3}s`,
+                  animationDuration: `${3 + Math.random() * 2}s`
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Geometric Pattern Overlay */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            opacity: 0.1,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.3'%3E%3Cpolygon points='20,0 40,20 20,40 0,20'/%3E%3C/g%3E%3C/svg%3E")`,
+            backgroundSize: '40px 40px',
+            zIndex: 5
+          }} />
+
+          {/* Main Text Content - FORCE VISIBLE */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            padding: '64px',
+            zIndex: 10,
+            color: 'white',
+            visibility: 'visible',
+            opacity: 1
+          }}>
+            <div>
+              <h1 style={{
+                fontSize: '64px',
+                fontWeight: '300',
+                letterSpacing: '0.1em',
+                marginBottom: '32px',
+                lineHeight: 1.1,
+                visibility: 'visible',
+                color: 'white'
+              }}>
+                <div style={{marginBottom: '8px', color: 'white'}}>THE</div>
+                <div style={{
+                  fontSize: '80px',
+                  fontWeight: 'bold',
+                  background: 'linear-gradient(90deg, #60a5fa 0%, #06b6d4 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  textShadow: '0 0 30px rgba(59, 130, 246, 0.4)',
+                  lineHeight: 1,
+                  marginBottom: '8px'
+                }}>
+                  PERFECT
+                </div>
+                <div style={{color: 'white'}}>MOMENT</div>
+              </h1>
+              
+              <p style={{
+                fontSize: '20px',
+                color: '#d1d5db',
+                lineHeight: 1.6,
+                maxWidth: '450px',
+                marginBottom: '40px',
+                visibility: 'visible'
+              }}>
+                Where data meets intuition. Where insights become action. 
+                Where every customer touchpoint becomes a perfect moment.
+              </p>
+              
+              <div style={{
+                height: '3px',
+                width: '120px',
+                background: 'linear-gradient(90deg, #60a5fa 0%, #06b6d4 100%)',
+                boxShadow: '0 0 20px rgba(6, 182, 212, 0.5)',
+                borderRadius: '2px',
+                visibility: 'visible'
+              }} />
+            </div>
+          </div>
+
+          {/* Client Appreciation Section - FORCE VISIBLE */}
+          <div style={{
+            position: 'absolute',
+            bottom: '40px',
+            left: '40px',
+            right: '40px',
+            zIndex: 20,
+            visibility: 'visible',
+            opacity: 1
+          }}>
+            <div style={{
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 100%)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+              borderRadius: '16px',
+              padding: '28px',
+              border: '1px solid rgba(255,255,255,0.25)',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
+              visibility: 'visible'
+            }}>
+              
+              {/* Header */}
+              <div style={{textAlign: 'center', marginBottom: '20px'}}>
+                <h3 style={{
+                  fontSize: '20px',
+                  fontWeight: '600',
+                  color: 'white',
+                  textShadow: '0 0 20px rgba(255, 255, 255, 0.3)',
+                  marginBottom: '6px',
+                  visibility: 'visible'
+                }}>
+                  Trusted by Industry Leaders
+                </h3>
+                <p style={{
+                  fontSize: '14px',
+                  color: '#a5f3fc',
+                  opacity: 0.85,
+                  visibility: 'visible'
+                }}>
+                  Join 500+ companies transforming customer experiences
+                </p>
+              </div>
+
+              {/* Stats Grid - FORCE VISIBLE */}
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '20px',
+                marginBottom: '20px',
+                visibility: 'visible'
+              }}>
+                <div className="hover-scale" style={{textAlign: 'center', cursor: 'pointer', visibility: 'visible'}}>
+                  <div style={{
+                    fontSize: '28px',
+                    fontWeight: 'bold',
+                    color: '#06b6d4',
+                    textShadow: '0 0 20px rgba(6, 182, 212, 0.6)',
+                    marginBottom: '4px',
+                    visibility: 'visible'
+                  }}>
+                    98%
+                  </div>
+                  <div style={{fontSize: '12px', color: 'rgba(255,255,255,0.7)', visibility: 'visible'}}>Satisfaction</div>
+                </div>
+                
+                <div className="hover-scale" style={{textAlign: 'center', cursor: 'pointer', visibility: 'visible'}}>
+                  <div style={{
+                    fontSize: '28px',
+                    fontWeight: 'bold',
+                    color: '#60a5fa',
+                    textShadow: '0 0 20px rgba(96, 165, 250, 0.6)',
+                    marginBottom: '4px',
+                    visibility: 'visible'
+                  }}>
+                    2.3x
+                  </div>
+                  <div style={{fontSize: '12px', color: 'rgba(255,255,255,0.7)', visibility: 'visible'}}>ROI Increase</div>
+                </div>
+                
+                <div className="hover-scale" style={{textAlign: 'center', cursor: 'pointer', visibility: 'visible'}}>
+                  <div className="animate-pulse" style={{
+                    fontSize: '28px',
+                    fontWeight: 'bold',
+                    color: '#34d399',
+                    marginBottom: '4px',
+                    visibility: 'visible'
+                  }}>
+                    24/7
+                  </div>
+                  <div style={{fontSize: '12px', color: 'rgba(255,255,255,0.7)', visibility: 'visible'}}>Support</div>
+                </div>
+              </div>
+
+              {/* Scrolling Testimonials - FORCE VISIBLE */}
+              <div style={{overflow: 'hidden', height: '50px', position: 'relative', visibility: 'visible'}}>
+                <div className="animate-marquee" style={{
+                  position: 'absolute',
+                  whiteSpace: 'nowrap',
+                  fontSize: '14px',
+                  visibility: 'visible'
+                }}>
+                  <span style={{color: 'rgba(255,255,255,0.85)', marginRight: '40px'}}>
+                    "Kairos transformed our marketing efficiency by 400%" - Sarah Chen, VP Marketing
+                  </span>
+                  <span style={{color: '#a5f3fc', marginRight: '40px'}}>
+                    "The perfect moment delivery is game-changing" - Michael Rodriguez, CMO
+                  </span>
+                  <span style={{color: '#93c5fd', marginRight: '40px'}}>
+                    "ROI increased within the first quarter" - Jennifer Liu, Marketing Director
+                  </span>
+                </div>
+              </div>
+
+              {/* Award Badge */}
+              <div style={{position: 'absolute', top: '-16px', right: '-16px', visibility: 'visible'}}>
+                <div className="animate-bounce hover-glow" style={{
+                  width: '40px',
+                  height: '40px',
+                  background: 'linear-gradient(135deg, #fbbf24 0%, #f97316 100%)',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: '0 4px 12px rgba(251, 191, 36, 0.3)',
+                  cursor: 'pointer',
+                  visibility: 'visible'
+                }}>
+                  <svg style={{width: '20px', height: '20px', color: 'white'}} fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                  </svg>
+                </div>
+              </div>
+
+              {/* Live Indicator */}
+              <div style={{position: 'absolute', bottom: '-12px', left: '50%', transform: 'translateX(-50%)', visibility: 'visible'}}>
+                <div className="animate-ping" style={{
+                  width: '16px',
+                  height: '16px',
+                  backgroundColor: '#10b981',
+                  borderRadius: '50%'
+                }} />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Side - FORCE VISIBLE LOGIN FORM */}
+        <div 
+          className="force-visible-right"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '32px',
+            width: '50%',
+            backgroundColor: 'white',
+            position: 'relative',
+            visibility: 'visible',
+            opacity: 1,
+            minHeight: '100vh'
+          }}
+        >
+          
+          {/* Subtle Shadow */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            left: 0,
+            width: '40px',
+            background: 'linear-gradient(90deg, rgba(15, 23, 42, 0.08) 0%, transparent 100%)',
+            visibility: 'visible'
+          }} />
+          
+          <div style={{
+            width: '100%', 
+            maxWidth: '420px',
+            visibility: 'visible',
+            opacity: 1
+          }}>
+            
+            {/* Logo - FORCE VISIBLE */}
+            <div style={{
+              display: 'flex', 
+              justifyContent: 'center', 
+              marginBottom: '40px',
+              visibility: 'visible'
+            }}>
+              <div className="hover-scale hover-glow" style={{
+                display: 'flex',
+                alignItems: 'center',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                visibility: 'visible'
+              }}>
+                <div style={{
+                  width: '56px',
+                  height: '56px',
+                  background: 'linear-gradient(135deg, #2563eb 0%, #06b6d4 100%)',
+                  borderRadius: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: '0 10px 20px rgba(37, 99, 235, 0.2)',
+                  marginRight: '16px',
+                  visibility: 'visible'
+                }}>
+                  <svg style={{width: '32px', height: '32px', color: 'white'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <span style={{
+                  fontSize: '28px',
+                  fontWeight: 'bold',
+                  background: 'linear-gradient(135deg, #2563eb 0%, #06b6d4 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  visibility: 'visible'
+                }}>
+                  Kairos
+                </span>
+              </div>
+            </div>
+
+            {/* Header - FORCE VISIBLE */}
+            <div style={{
+              textAlign: 'center', 
+              marginBottom: '40px',
+              visibility: 'visible'
+            }}>
+              <h2 style={{
+                fontSize: '36px',
+                fontWeight: 'bold',
+                color: '#111827',
+                marginBottom: '12px',
+                letterSpacing: '-0.025em',
+                visibility: 'visible'
+              }}>
+                Welcome Back
+              </h2>
+              <p style={{
+                color: '#6b7280', 
+                fontSize: '18px',
+                visibility: 'visible'
+              }}>
+                Enter your credentials to access your dashboard
+              </p>
+            </div>
+
+            {/* Development Mode Banner - FORCE VISIBLE */}
+            <div style={{
+              backgroundColor: '#fef3c7',
+              border: '2px solid #fbbf24',
+              borderRadius: '12px',
+              padding: '16px',
+              marginBottom: '32px',
+              textAlign: 'center',
+              visibility: 'visible'
+            }}>
+              <div style={{
+                fontSize: '16px', 
+                color: '#92400e', 
+                fontWeight: '600', 
+                marginBottom: '4px',
+                visibility: 'visible'
+              }}>
+                🎬 Both Sides Force Visible!
+              </div>
+              <div style={{
+                fontSize: '14px', 
+                color: '#a16207',
+                visibility: 'visible'
+              }}>
+                Left: True Detective • Right: Login Form • Portrait: Loading
+              </div>
+            </div>
+
+            {/* Login Form - FORCE VISIBLE */}
+            <form 
+              onSubmit={handleLogin} 
+              style={{
+                display: 'flex', 
+                flexDirection: 'column', 
+                gap: '24px',
+                visibility: 'visible',
+                opacity: 1
+              }}
+            >
+              
+              {/* Email Field - FORCE VISIBLE */}
+              <div style={{marginBottom: '4px', visibility: 'visible'}}>
+                <label style={{
+                  display: 'block',
+                  fontSize: '16px',
+                  fontWeight: '600',
+                  color: '#374151',
+                  marginBottom: '8px',
+                  visibility: 'visible'
+                }}>
+                  Email Address
+                </label>
+                <div style={{position: 'relative', visibility: 'visible'}}>
+                  <div style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '16px',
+                    transform: 'translateY(-50%)',
+                    color: '#9ca3af',
+                    width: '24px',
+                    height: '24px',
+                    visibility: 'visible'
+                  }}>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{width: '100%', height: '100%'}}>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                    </svg>
+                  </div>
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                    style={{
+                      display: 'block',
+                      width: '100%',
+                      paddingLeft: '56px',
+                      paddingRight: '56px',
+                      paddingTop: '16px',
+                      paddingBottom: '16px',
+                      border: '2px solid #e5e7eb',
+                      borderRadius: '12px',
+                      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+                      fontSize: '16px',
+                      outline: 'none',
+                      transition: 'all 0.2s ease',
+                      backgroundColor: '#fafafa',
+                      visibility: 'visible'
+                    }}
+                    placeholder="Enter your email"
+                  />
+                  <div style={{
+                    position: 'absolute',
+                    top: '50%',
+                    right: '16px',
+                    transform: 'translateY(-50%)',
+                    color: '#10b981',
+                    width: '24px',
+                    height: '24px',
+                    visibility: 'visible'
+                  }}>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{width: '100%', height: '100%'}}>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              {/* Password Field - FORCE VISIBLE */}
+              <div style={{marginBottom: '4px', visibility: 'visible'}}>
+                <label style={{
+                  display: 'block',
+                  fontSize: '16px',
+                  fontWeight: '600',
+                  color: '#374151',
+                  marginBottom: '8px',
+                  visibility: 'visible'
+                }}>
+                  Password
+                </label>
+                <div style={{position: 'relative', visibility: 'visible'}}>
+                  <div style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '16px',
+                    transform: 'translateY(-50%)',
+                    color: '#9ca3af',
+                    width: '24px',
+                    height: '24px',
+                    visibility: 'visible'
+                  }}>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{width: '100%', height: '100%'}}>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                  </div>
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    value={formData.password}
+                    onChange={(e) => setFormData(prev => ({ ...prev, password: e.target.value }))}
+                    style={{
+                      display: 'block',
+                      width: '100%',
+                      paddingLeft: '56px',
+                      paddingRight: '56px',
+                      paddingTop: '16px',
+                      paddingBottom: '16px',
+                      border: '2px solid #e5e7eb',
+                      borderRadius: '12px',
+                      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+                      fontSize: '16px',
+                      outline: 'none',
+                      transition: 'all 0.2s ease',
+                      backgroundColor: '#fafafa',
+                      visibility: 'visible'
+                    }}
+                    placeholder="Enter your password"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="hover-scale"
+                    style={{
+                      position: 'absolute',
+                      top: '50%',
+                      right: '16px',
+                      transform: 'translateY(-50%)',
+                      background: 'none',
+                      border: 'none',
+                      color: '#9ca3af',
+                      cursor: 'pointer',
+                      width: '24px',
+                      height: '24px',
+                      transition: 'all 0.2s ease',
+                      visibility: 'visible'
+                    }}
+                  >
+                    {showPassword ? (
+                      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{width: '100%', height: '100%'}}>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L8.055 8.055M13.928 13.928l4.243 4.243M9.878 9.878l4.242 4.242" />
+                      </svg>
+                    ) : (
+                      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{width: '100%', height: '100%'}}>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                      </svg>
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              {/* Remember Me & Forgot Password - FORCE VISIBLE */}
+              <div style={{
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'space-between',
+                visibility: 'visible'
+              }}>
+                <label className="hover-scale" style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  cursor: 'pointer',
+                  visibility: 'visible'
+                }}>
+                  <input type="checkbox" style={{
+                    width: '18px',
+                    height: '18px',
+                    borderRadius: '4px',
+                    border: '2px solid #d1d5db'
+                  }} />
+                  <span style={{
+                    fontSize: '14px', 
+                    color: '#6b7280', 
+                    fontWeight: '500',
+                    visibility: 'visible'
+                  }}>Remember me</span>
+                </label>
+                <a href="#" className="hover-scale" style={{
+                  fontSize: '14px',
+                  color: '#2563eb',
+                  textDecoration: 'none',
+                  fontWeight: '600',
+                  transition: 'all 0.2s ease',
+                  visibility: 'visible'
+                }}>
+                  Forgot password?
+                </a>
+              </div>
+
+              {/* Submit Button - FORCE VISIBLE */}
+              <button
+                type="submit"
+                disabled={isLoading}
+                className={isLoading ? '' : 'hover-scale hover-glow'}
+                style={{
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  padding: '18px 24px',
+                  border: 'none',
+                  borderRadius: '12px',
+                  fontSize: '18px',
+                  fontWeight: '600',
+                  color: 'white',
+                  background: isLoading 
+                    ? '#9ca3af' 
+                    : 'linear-gradient(135deg, #2563eb 0%, #06b6d4 100%)',
+                  cursor: isLoading ? 'not-allowed' : 'pointer',
+                  transition: 'all 0.2s ease',
+                  outline: 'none',
+                  boxShadow: isLoading 
+                    ? 'none' 
+                    : '0 4px 12px rgba(37, 99, 235, 0.3)',
+                  visibility: 'visible',
+                  opacity: 1
+                }}
+              >
+                {isLoading ? (
+                  <div style={{display: 'flex', alignItems: 'center', gap: '12px'}}>
+                    <div className="animate-spin" style={{
+                      width: '20px',
+                      height: '20px',
+                      border: '2px solid white',
+                      borderTop: '2px solid transparent',
+                      borderRadius: '50%'
+                    }} />
+                    <span>Signing in...</span>
+                  </div>
+                ) : (
+                  '🎬 Sign in to Kairos'
+                )}
+              </button>
+
+              {/* Footer - FORCE VISIBLE */}
+              <div style={{
+                textAlign: 'center', 
+                marginTop: '8px',
+                visibility: 'visible'
+              }}>
+                <p style={{
+                  fontSize: '14px', 
+                  color: '#6b7280',
+                  visibility: 'visible'
+                }}>
+                  Don't have an account?{' '}
+                  <a href="#" className="hover-scale" style={{
+                    color: '#2563eb',
+                    textDecoration: 'none',
+                    fontWeight: '600',
+                    visibility: 'visible'
+                  }}>
+                    Contact your administrator
+                  </a>
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ===== DASHBOARD AND OTHER PAGES =====
+const PageLoadingFallback: React.FC = () => (
+  <div style={{
+    minHeight: '100vh',
+    background: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 40%, #1e40af 100%)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }}>
+    <div style={{textAlign: 'center'}}>
+      <div style={{position: 'relative', marginBottom: '24px'}}>
+        <div className="animate-spin" style={{
+          width: '80px',
+          height: '80px',
+          border: '4px solid rgba(59, 130, 246, 0.2)',
+          borderTop: '4px solid #60a5fa',
+          borderRadius: '50%',
+          margin: '0 auto'
+        }} />
+      </div>
+      <p style={{
+        color: 'rgba(255,255,255,0.8)',
+        fontSize: '24px',
+        fontWeight: '300',
+        letterSpacing: '0.05em',
+        marginBottom: '8px'
+      }}>
+        Loading Kairos...
+      </p>
+      <div style={{color: 'rgba(6, 182, 212, 0.6)', fontSize: '16px'}}>
+        The Perfect Moment
+      </div>
+    </div>
+  </div>
+);
+
+const DashboardPage: React.FC = () => (
+  <div style={{
+    minHeight: '100vh',
+    background: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 25%, #e0f2fe 75%, #e0f7fa 100%)'
+  }}>
+    <div style={{maxWidth: '1400px', margin: '0 auto', padding: '40px 20px'}}>
+      
+      {/* Success Header */}
+      <div style={{
+        backgroundColor: 'white',
+        borderRadius: '20px',
+        padding: '40px',
+        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+        marginBottom: '40px',
+        border: '1px solid rgba(59, 130, 246, 0.1)'
+      }}>
+        <div style={{textAlign: 'center'}}>
+          <h1 style={{
+            fontSize: '56px',
+            fontWeight: 'bold',
+            background: 'linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #06b6d4 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            marginBottom: '20px',
+            letterSpacing: '-0.025em'
+          }}>
+            🎬 COMPLETE SUCCESS!
+          </h1>
+          <p style={{
+            fontSize: '24px',
+            color: '#059669',
+            fontWeight: '700',
+            marginBottom: '16px'
+          }}>
+            ✅ Both Sides Visible + Portrait Background Working!
+          </p>
+          <p style={{
+            color: '#6b7280',
+            fontSize: '18px',
+            maxWidth: '600px',
+            margin: '0 auto',
+            lineHeight: 1.6
+          }}>
+            Perfect! Now you have the complete True Detective cinematic experience with 
+            both the left cinematic panel AND the right login form visible, plus your 
+            portrait image properly integrated as background.
+          </p>
+        </div>
+      </div>
+
+      {/* Navigation */}
+      <div style={{textAlign: 'center'}}>
+        <button
+          onClick={() => window.location.href = '/login'}
+          className="hover-scale hover-glow"
+          style={{
+            padding: '16px 32px',
+            background: 'linear-gradient(135deg, #6b7280 0%, #4b5563 100%)',
+            color: 'white',
+            border: 'none',
+            borderRadius: '12px',
+            fontSize: '18px',
+            fontWeight: '600',
+            cursor: 'pointer',
+            boxShadow: '0 4px 12px rgba(107, 114, 128, 0.3)',
+            transition: 'all 0.2s ease'
+          }}
+        >
+          ← Back to Complete Login Experience
+        </button>
+      </div>
+    </div>
+  </div>
+);
+
+const SimplePage: React.FC<{ title: string }> = ({ title }) => (
+  <div style={{
+    minHeight: '100vh',
+    background: 'linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }}>
+    <div style={{textAlign: 'center', maxWidth: '500px', margin: '0 auto', padding: '40px 20px'}}>
+      <div className="hover-glow" style={{
+        width: '80px',
+        height: '80px',
+        background: 'linear-gradient(135deg, #2563eb 0%, #06b6d4 100%)',
+        borderRadius: '20px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: '0 auto 32px',
+        boxShadow: '0 10px 20px rgba(37, 99, 235, 0.2)'
+      }}>
+        <svg style={{width: '40px', height: '40px', color: 'white'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <h1 style={{
+        fontSize: '36px',
+        fontWeight: 'bold',
+        color: '#1e40af',
+        marginBottom: '16px',
+        letterSpacing: '-0.025em'
+      }}>
+        {title}
+      </h1>
+      <p style={{color: '#6b7280', marginBottom: '32px', fontSize: '18px', lineHeight: 1.6}}>
+        This feature is coming soon to your Kairos experience! We're building something amazing.
+      </p>
+      <button
+        onClick={() => window.location.href = '/login'}
+        className="hover-scale hover-glow"
+        style={{
+          padding: '14px 28px',
+          backgroundColor: '#2563eb',
+          color: 'white',
+          border: 'none',
+          borderRadius: '12px',
+          fontSize: '16px',
+          fontWeight: '600',
+          cursor: 'pointer',
+          boxShadow: '0 4px 12px rgba(37, 99, 235, 0.3)',
+          transition: 'all 0.2s ease'
+        }}
+      >
+        ← Back to Login
+      </button>
+    </div>
+  </div>
+);
+
+// ===== MAIN APP ROUTER =====
+export const AppRouter: React.FC = () => {
+  const location = useLocation();
+
+  console.log('🎬 COMPLETE ROUTER: Current location:', location.pathname);
+  console.log('🎬 COMPLETE ROUTER: BOTH SIDES VISIBLE + PORTRAIT version');
+
+  // Clear emergency styles on route changes
+  useEffect(() => {
+    console.log('🎬 COMPLETE ROUTER: Route changed, clearing emergency styles...');
+    document.body.style.cssText = '';
+    const root = document.getElementById('root');
+    if (root) {
+      root.style.cssText = '';
+    }
+  }, [location.pathname]);
+
+  return (
+    <Suspense fallback={<PageLoadingFallback />}>
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/login" element={<CinematicLoginPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/atoms" element={<SimplePage title="Eligibility Atoms" />} />
+        <Route path="/moments" element={<SimplePage title="Perfect Moments" />} />
+        <Route path="/campaigns" element={<SimplePage title="Campaign Orchestra" />} />
+        <Route path="/analytics" element={<SimplePage title="Analytics Hub" />} />
+        <Route path="/auth/*" element={<Navigate to="/login" replace />} />
+        <Route path="*" element={<SimplePage title="Page Not Found" />} />
+      </Routes>
+    </Suspense>
+  );
+};
+
+export default AppRouter;

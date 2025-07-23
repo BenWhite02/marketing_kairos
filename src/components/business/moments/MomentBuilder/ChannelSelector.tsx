@@ -474,10 +474,7 @@ const ChannelSelector: React.FC<ChannelSelectorProps> = ({
             <div className="flex items-center space-x-4 text-sm text-gray-600">
               <span>{enabledChannelsCount} channels selected</span>
               <span>~{totalReach.toLocaleString()} potential reach</span>
-          );
-};
-
-export default ChannelSelector;
+            </div>
           </div>
         </CardHeader>
         <CardBody>
@@ -501,4 +498,13 @@ export default ChannelSelector;
               <GlobeAltIcon className="w-6 h-6 text-orange-600 mx-auto mb-2" />
               <div className="text-sm font-medium text-orange-900">Web</div>
               <div className="text-xs text-orange-600">125K reach</div>
-            </div
+            </div>
+          </div>
+        </CardBody>
+      </Card>
+    </div>
+  );
+};
+
+export { ChannelSelector };
+export default ChannelSelector;

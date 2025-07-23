@@ -1,0 +1,44 @@
+/* src/styles/globals.css */
+/* ================================
+   GLOBAL STYLES
+   ================================ */
+
+/* Additional global styles specific to Kairos */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus management */
+.focus-trap {
+  outline: none;
+}
+
+/* Page transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 300ms, transform 300ms;
+}

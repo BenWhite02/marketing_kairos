@@ -1,24 +1,390 @@
+/* File: src/App.css */
+/* Enhanced Kairos Application Styles with True Detective Cinematic Effects */
+/* Global styles and component overrides */
+
+/* Root application styles with cinematic enhancements */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  position: relative;
+  overflow-x: hidden;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Application container with cinematic backdrop */
+.App {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
 }
 
-@keyframes logo-spin {
+/* Enhanced Kairos brand colors with cinematic additions */
+:root {
+  /* Original Kairos colors */
+  --kairos-primary: #3b82f6;
+  --kairos-primary-dark: #2563eb;
+  --kairos-primary-light: #60a5fa;
+  --kairos-secondary: #1e293b;
+  --kairos-accent: #10b981;
+  --kairos-warning: #f59e0b;
+  --kairos-error: #ef4444;
+  --kairos-success: #10b981;
+  
+  /* Cinematic color palette */
+  --cinematic-dark: #0f172a;
+  --cinematic-dark-blue: #1e293b;
+  --cinematic-medium-blue: #334155;
+  --cinematic-light-blue: #64748b;
+  --cinematic-accent-blue: #3b82f6;
+  --cinematic-accent-cyan: #06b6d4;
+  --cinematic-gold: #f59e0b;
+  --cinematic-silver: #94a3b8;
+  --cinematic-overlay: rgba(15, 23, 42, 0.8);
+  
+  /* Enhanced gray scale */
+  --kairos-gray-50: #f8fafc;
+  --kairos-gray-100: #f1f5f9;
+  --kairos-gray-200: #e2e8f0;
+  --kairos-gray-300: #cbd5e1;
+  --kairos-gray-400: #94a3b8;
+  --kairos-gray-500: #64748b;
+  --kairos-gray-600: #475569;
+  --kairos-gray-700: #334155;
+  --kairos-gray-800: #1e293b;
+  --kairos-gray-900: #0f172a;
+  
+  /* Cinematic timing functions */
+  --ease-cinematic: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-dramatic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Cinematic shadows */
+  --shadow-cinematic: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --shadow-cinematic-lg: 0 35px 60px -12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  --shadow-glow-blue: 0 0 20px rgba(59, 130, 246, 0.3);
+  --shadow-glow-cyan: 0 0 20px rgba(6, 182, 212, 0.3);
+  --shadow-inner-glow: inset 0 2px 4px rgba(0, 0, 0, 0.06), 0 0 20px rgba(59, 130, 246, 0.1);
+}
+
+/* Dark theme support with enhanced cinematic colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --kairos-gray-50: #0f172a;
+    --kairos-gray-100: #1e293b;
+    --kairos-gray-200: #334155;
+    --kairos-gray-300: #475569;
+    --kairos-gray-400: #64748b;
+    --kairos-gray-500: #94a3b8;
+    --kairos-gray-600: #cbd5e1;
+    --kairos-gray-700: #e2e8f0;
+    --kairos-gray-800: #f1f5f9;
+    --kairos-gray-900: #f8fafc;
+    
+    /* Enhanced dark mode cinematic colors */
+    --cinematic-overlay: rgba(15, 23, 42, 0.9);
+    --shadow-glow-blue: 0 0 30px rgba(96, 165, 250, 0.4);
+    --shadow-glow-cyan: 0 0 30px rgba(34, 211, 238, 0.4);
+  }
+}
+
+/* Professional card component styling with cinematic hover effects */
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+  transition: all 0.4s var(--ease-cinematic);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+  transition: left 0.6s var(--ease-cinematic);
+  z-index: 1;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-cinematic), var(--shadow-glow-blue);
+  transform: translateY(-4px) rotateX(2deg);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.card:hover::before {
+  left: 100%;
+}
+
+/* Cinematic card variant */
+.card-cinematic {
+  background: linear-gradient(135deg, 
+    rgba(15, 23, 42, 0.95) 0%, 
+    rgba(30, 41, 59, 0.9) 25%, 
+    rgba(51, 65, 85, 0.85) 50%, 
+    rgba(30, 41, 59, 0.9) 75%, 
+    rgba(15, 23, 42, 0.95) 100%
+  );
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-cinematic::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg, 
+    rgba(59, 130, 246, 0.1) 0%, 
+    transparent 25%, 
+    transparent 75%, 
+    rgba(6, 182, 212, 0.1) 100%
+  );
+  mix-blend-mode: overlay;
+  z-index: 1;
+}
+
+.card-cinematic::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.03;
+  z-index: 2;
+}
+
+.card-cinematic:hover {
+  box-shadow: var(--shadow-cinematic-lg), var(--shadow-glow-cyan);
+  transform: translateY(-6px) rotateX(3deg);
+}
+
+/* Enhanced focus styles for accessibility with cinematic glow */
+*:focus {
+  outline: 2px solid var(--kairos-primary);
+  outline-offset: 2px;
+  transition: all 0.3s var(--ease-cinematic);
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--kairos-primary);
+  outline-offset: 2px;
+  box-shadow: var(--shadow-glow-blue);
+}
+
+/* Button focus enhancement with cinematic effects */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--kairos-primary);
+  outline-offset: 2px;
+  border-color: var(--kairos-primary);
+  box-shadow: var(--shadow-glow-blue);
+  transform: translateY(-1px);
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced custom scrollbar styling with cinematic effects */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, var(--kairos-gray-100), var(--kairos-gray-200));
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--cinematic-accent-blue), var(--cinematic-accent-cyan));
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s var(--ease-cinematic);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--kairos-primary), var(--cinematic-accent-cyan));
+  box-shadow: var(--shadow-glow-blue);
+  transform: scale(1.1);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--kairos-gray-100);
+}
+
+/* Enhanced loading animation with cinematic glow */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes cinematicPulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: var(--shadow-glow-blue);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: var(--shadow-glow-cyan);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-cinematic-pulse {
+  animation: cinematicPulse 3s var(--ease-cinematic) infinite;
+}
+
+/* Enhanced Kairos logo animation with cinematic glow */
+@keyframes kairos-glow {
+  0%, 100% {
+    box-shadow: var(--shadow-glow-blue);
+    filter: brightness(1);
+  }
+  33% {
+    box-shadow: var(--shadow-glow-cyan);
+    filter: brightness(1.1);
+  }
+  66% {
+    box-shadow: 0 0 25px rgba(245, 158, 11, 0.4);
+    filter: brightness(1.05);
+  }
+}
+
+.kairos-logo {
+  animation: kairos-glow 4s ease-in-out infinite;
+  transition: all 0.3s var(--ease-cinematic);
+}
+
+.kairos-logo:hover {
+  transform: scale(1.05) rotate(2deg);
+  filter: brightness(1.2);
+}
+
+/* Professional gradient backgrounds with cinematic depth */
+.gradient-primary {
+  background: linear-gradient(135deg, var(--kairos-primary) 0%, var(--kairos-primary-dark) 100%);
+  position: relative;
+}
+
+.gradient-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-cinematic);
+}
+
+.gradient-primary:hover::before {
+  opacity: 1;
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, var(--kairos-gray-600) 0%, var(--kairos-gray-800) 100%);
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, var(--kairos-accent) 0%, #059669 100%);
+}
+
+.gradient-cinematic {
+  background: linear-gradient(135deg, 
+    var(--cinematic-dark) 0%, 
+    var(--cinematic-dark-blue) 25%, 
+    var(--cinematic-medium-blue) 50%, 
+    var(--cinematic-dark-blue) 75%, 
+    var(--cinematic-dark) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-cinematic::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg, 
+    rgba(59, 130, 246, 0.1) 0%, 
+    transparent 25%, 
+    transparent 75%, 
+    rgba(6, 182, 212, 0.1) 100%
+  );
+  mix-blend-mode: overlay;
+  animation: float 8s ease-in-out infinite;
+}
+
+/* Enhanced animations for form elements with cinematic effects */
+.form-input {
+  transition: all 0.3s var(--ease-cinematic);
+  position: relative;
+  overflow: hidden;
+}
+
+.form-input::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cinematic-accent-blue), var(--cinematic-accent-cyan));
+  transition: width 0.3s var(--ease-cinematic);
+}
+
+.form-input:focus {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-cinematic), var(--shadow-glow-blue);
+}
+
+.form-input:focus::before {
+  width: 100%;
+}
+
+/* Professional loading spinner with cinematic glow */
+@keyframes spin {
   from {
     transform: rotate(0deg);
   }
@@ -27,16 +393,304 @@
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@keyframes cinematicSpin {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: var(--shadow-glow-blue);
+  }
+  33% {
+    box-shadow: var(--shadow-glow-cyan);
+  }
+  66% {
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+  }
+  100% {
+    transform: rotate(360deg);
+    box-shadow: var(--shadow-glow-blue);
   }
 }
 
-.card {
-  padding: 2em;
+.animate-spin {
+  animation: spin 1s linear infinite;
 }
 
-.read-the-docs {
-  color: #888;
+.animate-cinematic-spin {
+  animation: cinematicSpin 2s linear infinite;
+}
+
+/* Enhanced toast notification styling */
+.Toaster__toast {
+  font-family: inherit;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-cinematic);
+}
+
+.Toaster__toast--success {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.9), rgba(22, 163, 74, 0.9));
+  color: white;
+}
+
+.Toaster__toast--error {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.9), rgba(220, 38, 38, 0.9));
+  color: white;
+}
+
+.Toaster__toast--warning {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.9), rgba(217, 119, 6, 0.9));
+  color: white;
+}
+
+/* True Detective style text effects */
+.text-detective {
+  font-family: 'Montserrat', var(--font-sans);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.5),
+    0 2px 6px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.text-detective-hero {
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: 0.05em;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 1) 0%,
+    rgba(59, 130, 246, 0.9) 50%,
+    rgba(6, 182, 212, 0.8) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  position: relative;
+}
+
+.text-detective-hero::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  color: rgba(255, 255, 255, 0.1);
+  text-shadow: 
+    2px 2px 0 rgba(0, 0, 0, 0.3),
+    4px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.text-detective-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Atmospheric floating elements */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+    opacity: 0.2;
+  }
+  25% {
+    opacity: 0.4;
+  }
+  50% { 
+    transform: translateY(-20px) rotate(180deg); 
+    opacity: 0.6;
+  }
+  75% {
+    opacity: 0.4;
+  }
+}
+
+.atmospheric-particle {
+  animation: float 6s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Film grain overlay */
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0) }
+  10% { transform: translate(-5%, -10%) }
+  20% { transform: translate(-15%, 5%) }
+  30% { transform: translate(7%, -25%) }
+  40% { transform: translate(-5%, 25%) }
+  50% { transform: translate(-15%, 10%) }
+  60% { transform: translate(15%, 0%) }
+  70% { transform: translate(0%, 15%) }
+  80% { transform: translate(3%, 35%) }
+  90% { transform: translate(-10%, 10%) }
+}
+
+.film-grain-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  animation: grain 8s steps(10) infinite;
+}
+
+/* Portrait integration effects */
+.portrait-integration {
+  position: relative;
+  overflow: hidden;
+}
+
+.portrait-integration::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.7) 0%,
+    rgba(30, 41, 59, 0.5) 25%,
+    rgba(51, 65, 85, 0.3) 50%,
+    rgba(30, 41, 59, 0.5) 75%,
+    rgba(15, 23, 42, 0.7) 100%
+  );
+  z-index: 1;
+}
+
+.portrait-integration::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 20%,
+    rgba(59, 130, 246, 0.1) 40%,
+    rgba(6, 182, 212, 0.1) 60%,
+    rgba(15, 23, 42, 0.8) 100%
+  );
+  z-index: 2;
+}
+
+/* Accessibility improvements with cinematic styling */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .kairos-logo,
+  .atmospheric-particle,
+  .film-grain-overlay,
+  .gradient-cinematic::before {
+    animation: none !important;
+  }
+
+  .card::before,
+  .form-input::before {
+    transition: none !important;
+  }
+}
+
+/* High contrast mode support with enhanced visibility */
+@media (prefers-contrast: high) {
+  .card {
+    border: 3px solid var(--kairos-gray-600);
+  }
+  
+  button {
+    border: 2px solid currentColor;
+  }
+
+  .portrait-integration::before,
+  .portrait-integration::after {
+    opacity: 0.9;
+  }
+  
+  .film-grain-overlay {
+    opacity: 0.1;
+  }
+
+  .text-detective-hero {
+    -webkit-text-fill-color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* Enhanced print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  * {
+    color: black !important;
+    background: white !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+
+  .film-grain-overlay,
+  .portrait-integration::before,
+  .portrait-integration::after,
+  .gradient-cinematic::before,
+  .atmospheric-particle {
+    display: none !important;
+  }
+
+  .card {
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Responsive typography adjustments */
+@media (max-width: 768px) {
+  .text-detective-hero {
+    font-size: clamp(1.5rem, 8vw, 3rem);
+    letter-spacing: 0.02em;
+  }
+
+  .text-detective-subtitle {
+    font-size: clamp(0.875rem, 4vw, 1.125rem);
+    line-height: 1.5;
+  }
+
+  .card {
+    border-radius: 8px;
+    margin: 0.5rem;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+/* Ultra-wide screen optimizations */
+@media (min-width: 1920px) {
+  .text-detective-hero {
+    font-size: clamp(3rem, 4vw, 5rem);
+  }
+
+  .atmospheric-particle {
+    animation-duration: 8s;
+  }
+
+  .card:hover {
+    transform: translateY(-6px) rotateX(3deg);
+  }
 }

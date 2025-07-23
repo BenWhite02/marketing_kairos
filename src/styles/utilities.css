@@ -1,0 +1,132 @@
+/* src/styles/utilities.css */
+/* ================================
+   UTILITY CLASSES
+   ================================ */
+
+/* Layout utilities */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-col-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Spacing utilities */
+.space-y-sm > * + * {
+  margin-top: var(--spacing-sm);
+}
+
+.space-y-md > * + * {
+  margin-top: var(--spacing-md);
+}
+
+.space-y-lg > * + * {
+  margin-top: var(--spacing-lg);
+}
+
+/* Text utilities */
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* Visibility utilities */
+.show-on-hover {
+  opacity: 0;
+  transition: opacity var(--duration-normal) ease;
+}
+
+.group:hover .show-on-hover,
+.group:focus .show-on-hover {
+  opacity: 1;
+}
+
+.hide-on-hover {
+  opacity: 1;
+  transition: opacity var(--duration-normal) ease;
+}
+
+.group:hover .hide-on-hover,
+.group:focus .hide-on-hover {
+  opacity: 0;
+}
+
+/* Scrollbar utilities */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: var(--theme-border-strong);
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Performance utilities */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.smooth-scroll {
+  scroll-behavior: smooth;
+}

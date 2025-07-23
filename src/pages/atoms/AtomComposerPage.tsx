@@ -40,6 +40,55 @@ export const AtomComposerPage: React.FC = () => {
   const mockAtoms: AtomTemplate[] = [
     // Demographic Atoms
     {
+      id: 'demo-age-1',
+      name: 'Age Range 18-34',
+      type: 'demographic',
+      category: 'Age Groups',
+      data: { minAge: 18, maxAge: 34 },
+      accuracy: 95,
+      usage: 2340,
+      description: 'Users between 18 and 34 years old',
+      tags: ['millennials', 'young-adults'],
+      isPopular: true
+    },
+    {
+      id: 'demo-location-1',
+      name: 'Urban Residents',
+      type: 'demographic',
+      category: 'Geography',
+      data: { locationType: 'urban', population: '>50000' },
+      accuracy: 88,
+      usage: 1890,
+      description: 'Users living in urban areas',
+      tags: ['city', 'metropolitan']
+    },
+    {
+      id: 'demo-income-1',
+      name: 'High Income',
+      type: 'demographic',
+      category: 'Income',
+      data: { minIncome: 75000, currency: 'USD' },
+      accuracy: 78,
+      usage: 1456,
+      description: 'Users with household income >$75k',
+      tags: ['affluent', 'premium'],
+      isFavorite: true
+    },
+
+    // Behavioral Atoms
+    {
+      id: 'behav-frequency-1',
+      name: 'High Purchase Frequency',
+      type: 'behavioral',
+      category: 'Purchase Behavior',
+      data: { minPurchasesPerMonth: 5 },
+      accuracy: 92,
+      usage: 3210,
+      description: 'Users who purchase frequently',
+      tags: ['loyal', 'active'],
+      isPopular: true
+    },
+    {
       id: 'behav-engagement-1',
       name: 'High Email Engagement',
       type: 'behavioral',
@@ -325,53 +374,4 @@ export const AtomComposerPage: React.FC = () => {
       </div>
     </div>
   );
-};d: 'demo-age-1',
-      name: 'Age Range 18-34',
-      type: 'demographic',
-      category: 'Age Groups',
-      data: { minAge: 18, maxAge: 34 },
-      accuracy: 95,
-      usage: 2340,
-      description: 'Users between 18 and 34 years old',
-      tags: ['millennials', 'young-adults'],
-      isPopular: true
-    },
-    {
-      id: 'demo-location-1',
-      name: 'Urban Residents',
-      type: 'demographic',
-      category: 'Geography',
-      data: { locationType: 'urban', population: '>50000' },
-      accuracy: 88,
-      usage: 1890,
-      description: 'Users living in urban areas',
-      tags: ['city', 'metropolitan']
-    },
-    {
-      id: 'demo-income-1',
-      name: 'High Income',
-      type: 'demographic',
-      category: 'Income',
-      data: { minIncome: 75000, currency: 'USD' },
-      accuracy: 78,
-      usage: 1456,
-      description: 'Users with household income >$75k',
-      tags: ['affluent', 'premium'],
-      isFavorite: true
-    },
-
-    // Behavioral Atoms
-    {
-      id: 'behav-frequency-1',
-      name: 'High Purchase Frequency',
-      type: 'behavioral',
-      category: 'Purchase Behavior',
-      data: { minPurchasesPerMonth: 5 },
-      accuracy: 92,
-      usage: 3210,
-      description: 'Users who purchase frequently',
-      tags: ['loyal', 'active'],
-      isPopular: true
-    },
-    {
-      i
+};

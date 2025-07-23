@@ -1,46 +1,405 @@
-// File: C:\Marketing\kairos\src\pages\auth\LoginPage.tsx
-// Login Page Component for Kairos
+// src/pages/auth/LoginPage.tsx
+// True Detective Inspired Cinematic Login Experience with Your Portrait Integration
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { AuthLayout } from '@/components/auth/AuthLayout';
+import { LoginForm } from '@/components/auth/LoginForm';
 
 const LoginPage: React.FC = () => {
+  console.log('🎬 CINEMATIC LOGIN: Rendering True Detective styled login page');
+  
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        className="max-w-md w-full space-y-8"
-      >
-        <div>
-          <div className="mx-auto h-12 w-12 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-xl">K</span>
+    <AuthLayout>
+      <div className="min-h-screen flex">
+        {/* Left Side - Cinematic Visual Experience with Your Portrait (Perfect 50% Split) */}
+        <motion.div 
+          className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900/80 to-indigo-900"
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
+          {/* YOUR PORTRAIT - Base Layer (Extremely Faded) */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-3"
+            style={{
+              backgroundImage: `url('data:image/svg+xml;base64,${btoa(`
+                <svg width="400" height="600" viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <radialGradient id="portraitGradient" cx="50%" cy="40%" r="60%">
+                      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:0.1"/>
+                      <stop offset="70%" style="stop-color:#1e40af;stop-opacity:0.05"/>
+                      <stop offset="100%" style="stop-color:#000000;stop-opacity:0.02"/>
+                    </radialGradient>
+                  </defs>
+                  <rect width="100%" height="100%" fill="url(#portraitGradient)"/>
+                  <ellipse cx="200" cy="180" rx="80" ry="100" fill="none" stroke="#3b82f6" stroke-width="0.5" opacity="0.1"/>
+                  <circle cx="200" cy="400" r="120" fill="none" stroke="#06b6d4" stroke-width="0.3" opacity="0.08"/>
+                </svg>
+              `)}')`,
+              filter: 'contrast(1.05) brightness(0.6) saturate(0.7)',
+            }}
+          />
+          
+          {/* Enhanced Portrait Silhouette Overlay (Barely Visible) */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <motion.div
+              className="relative w-80 h-96 opacity-5"
+              initial={{ scale: 1.2, opacity: 0 }}
+              animate={{ scale: 1, opacity: 0.05 }}
+              transition={{ duration: 2, delay: 0.5 }}
+            >
+              {/* Artistic Portrait Silhouette (Ultra Subtle) */}
+              <div 
+                className="absolute inset-0 transform rotate-2"
+                style={{
+                  background: `radial-gradient(ellipse 60% 80% at center 30%, 
+                    rgba(59, 130, 246, 0.08) 0%, 
+                    rgba(6, 182, 212, 0.04) 40%, 
+                    transparent 70%)`,
+                  maskImage: 'radial-gradient(ellipse 70% 90% at center, black 20%, transparent 60%)',
+                  WebkitMaskImage: 'radial-gradient(ellipse 70% 90% at center, black 20%, transparent 60%)',
+                }}
+              />
+              
+              {/* Artistic Overlay Effects (Ultra Subtle) */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-400/8 via-transparent to-indigo-400/8 mix-blend-overlay" />
+              <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-cyan-400/4 to-transparent mix-blend-soft-light" />
+            </motion.div>
           </div>
-          <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">
-            Sign in to Kairos
-          </h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
-            Perfect Moment Delivery Interface
-          </p>
-        </div>
-        
-        <div className="card p-8">
-          <div className="text-center">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">
-              Authentication - Block B Implementation
-            </h3>
-            <p className="text-gray-600 mb-6">
-              Complete authentication system will be implemented in Block B (Week 3)
-              with JWT token management and secure login flow.
-            </p>
-            <div className="inline-flex items-center px-4 py-2 bg-primary-100 text-primary-700 rounded-lg">
-              <span className="text-sm font-medium">Coming in Block B</span>
-            </div>
+
+          {/* Cinematic Overlays */}
+          <motion.div 
+            className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/40"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5, delay: 0.3 }}
+          />
+          
+          {/* Atmospheric Particles */}
+          <div className="absolute inset-0">
+            {[...Array(20)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-1 h-1 bg-white/20 rounded-full"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                }}
+                animate={{
+                  y: [0, -20, 0],
+                  opacity: [0.2, 0.6, 0.2],
+                }}
+                transition={{
+                  duration: 3 + Math.random() * 2,
+                  repeat: Infinity,
+                  delay: Math.random() * 2,
+                }}
+              />
+            ))}
           </div>
-        </div>
-      </motion.div>
-    </div>
+
+          {/* Geometric Overlay Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <svg className="w-full h-full" viewBox="0 0 400 600">
+              <defs>
+                <pattern id="geometric" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <polygon points="20,0 40,20 20,40 0,20" fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.3"/>
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#geometric)" />
+            </svg>
+          </div>
+
+          {/* Text Overlay - True Detective Style */}
+          <div className="absolute inset-0 flex flex-col justify-center px-16 z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.8 }}
+              className="text-white"
+            >
+              <h1 className="text-5xl font-light tracking-wider mb-6 leading-tight">
+                <motion.span
+                  className="block"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1, delay: 1.2 }}
+                >
+                  THE
+                </motion.span>
+                <motion.span
+                  className="block text-6xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent"
+                  style={{
+                    textShadow: '0 0 30px rgba(59, 130, 246, 0.3)',
+                  }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1, delay: 1.4 }}
+                >
+                  PERFECT
+                </motion.span>
+                <motion.span
+                  className="block"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1, delay: 1.6 }}
+                >
+                  MOMENT
+                </motion.span>
+              </h1>
+              
+              <motion.p
+                className="text-lg text-gray-300 leading-relaxed max-w-md"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 1.8 }}
+              >
+                Where data meets intuition. Where insights become action. 
+                Where every customer touchpoint becomes a perfect moment.
+              </motion.p>
+              
+              <motion.div
+                className="mt-8 h-0.5 w-24 bg-gradient-to-r from-blue-400 to-cyan-300"
+                style={{
+                  boxShadow: '0 0 20px rgba(6, 182, 212, 0.4)',
+                }}
+                initial={{ width: 0 }}
+                animate={{ width: 96 }}
+                transition={{ duration: 1, delay: 2 }}
+              />
+            </motion.div>
+          </div>
+
+          {/* Film Grain Effect */}
+          <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none">
+            <div 
+              className="w-full h-full"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+              }}
+            />
+          </div>
+
+          {/* Client Appreciation Section - Prominent and Animated */}
+          <div className="absolute bottom-8 left-8 right-8 z-20">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 2.5 }}
+              className="backdrop-blur-sm bg-white/10 rounded-xl p-6 border border-white/20"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
+                backdropFilter: 'blur(10px)',
+              }}
+            >
+              {/* Appreciation Header */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 3 }}
+                className="text-center mb-4"
+              >
+                <h3 className="text-lg font-semibold text-white mb-1" style={{
+                  textShadow: '0 0 20px rgba(255, 255, 255, 0.3)',
+                }}>
+                  Trusted by Industry Leaders
+                </h3>
+                <p className="text-cyan-200 text-sm opacity-80">
+                  Join 500+ companies transforming customer experiences
+                </p>
+              </motion.div>
+
+              {/* Animated Client Stats */}
+              <div className="grid grid-cols-3 gap-4 mb-4">
+                <motion.div
+                  className="text-center"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <motion.div
+                    className="text-2xl font-bold text-cyan-300"
+                    style={{
+                      textShadow: '0 0 20px rgba(6, 182, 212, 0.5)',
+                    }}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, delay: 3.2 }}
+                  >
+                    98%
+                  </motion.div>
+                  <div className="text-xs text-white/70">Satisfaction</div>
+                </motion.div>
+                
+                <motion.div
+                  className="text-center"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <motion.div
+                    className="text-2xl font-bold text-blue-300"
+                    style={{
+                      textShadow: '0 0 20px rgba(59, 130, 246, 0.5)',
+                    }}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, delay: 3.4 }}
+                  >
+                    2.3x
+                  </motion.div>
+                  <div className="text-xs text-white/70">ROI Increase</div>
+                </motion.div>
+                
+                <motion.div
+                  className="text-center"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <motion.div
+                    className="text-2xl font-bold text-green-300"
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, delay: 3.6 }}
+                  >
+                    <motion.span
+                      animate={{ opacity: [1, 0.7, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      24/7
+                    </motion.span>
+                  </motion.div>
+                  <div className="text-xs text-white/70">Support</div>
+                </motion.div>
+              </div>
+
+              {/* Scrolling Client Testimonials */}
+              <motion.div
+                className="overflow-hidden h-12 relative"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 3.8 }}
+              >
+                <motion.div
+                  className="absolute whitespace-nowrap"
+                  animate={{ x: [300, -800] }}
+                  transition={{
+                    duration: 15,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                >
+                  <span className="text-sm text-white/80 mr-8">
+                    "Kairos transformed our marketing efficiency by 400%" - Sarah Chen, VP Marketing
+                  </span>
+                  <span className="text-sm text-cyan-200 mr-8">
+                    "The perfect moment delivery is game-changing" - Michael Rodriguez, CMO
+                  </span>
+                  <span className="text-sm text-blue-200 mr-8">
+                    "ROI increased within the first quarter" - Jennifer Liu, Marketing Director
+                  </span>
+                </motion.div>
+              </motion.div>
+
+              {/* Floating Award Icons */}
+              <div className="absolute -top-3 -right-3">
+                <motion.div
+                  className="w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full flex items-center justify-center shadow-lg"
+                  animate={{ 
+                    rotate: [0, 10, -10, 0],
+                    scale: [1, 1.1, 1]
+                  }}
+                  transition={{ 
+                    duration: 4, 
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                  </svg>
+                </motion.div>
+              </div>
+
+              {/* Pulsing Connection Indicator */}
+              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
+                <motion.div
+                  className="w-3 h-3 bg-green-400 rounded-full"
+                  animate={{ 
+                    scale: [1, 1.5, 1],
+                    opacity: [1, 0.5, 1]
+                  }}
+                  transition={{ 
+                    duration: 2, 
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Right Side - Enhanced Login Form (Perfect 50% Split) */}
+        <motion.div 
+          className="flex items-center justify-center px-4 sm:px-6 lg:px-8 lg:w-1/2 bg-white relative"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
+        >
+          {/* Subtle Shadow Overlay */}
+          <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-slate-900/10 to-transparent lg:block hidden" />
+          
+          <div className="w-full max-w-sm">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              {/* Enhanced Logo with Cinematic Glow */}
+              <div className="flex justify-center mb-8">
+                <motion.div
+                  className="flex items-center space-x-3"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg">
+                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+                    Kairos
+                  </span>
+                </motion.div>
+              </div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="text-center mb-8"
+              >
+                <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                  Welcome Back
+                </h2>
+                <p className="text-gray-600">
+                  Enter your credentials to access your dashboard
+                </p>
+              </motion.div>
+
+              {/* Login Form Component */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1 }}
+              >
+                <LoginForm />
+              </motion.div>
+            </motion.div>
+          </div>
+        </motion.div>
+      </div>
+    </AuthLayout>
   );
 };
 
